@@ -1,5 +1,489 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
+:root {
+  --bg: #1a1a1a;
+  --red: #b81405;
+  --white: #ffffff;
+  --muted: #a8a8a8;
+}
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      ellipse 22% 38% at 0% 100%,
+      rgba(244, 178, 168, 0.95),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 22% 38% at 100% 100%,
+      rgba(244, 178, 168, 0.95),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 14% 40% at 0% 62%,
+      rgba(214, 90, 78, 0.55),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 14% 40% at 100% 62%,
+      rgba(214, 90, 78, 0.55),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 12% 30% at 100% 22%,
+      rgba(130, 50, 44, 0.65),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 12% 30% at 0% 22%,
+      rgba(90, 30, 28, 0.5),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #1a1a1a 0%,
+      #1a1a1a 38%,
+      #3a1511 55%,
+      #6a150d 70%,
+      #9a1509 84%,
+      #ab1a0d 100%
+    );
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 36px,
+    rgba(255, 255, 255, 0.05) 36px,
+    rgba(255, 255, 255, 0.05) 72px
+  );
+  filter: blur(3px);
+  -webkit-mask-image: linear-gradient(180deg, transparent 20%, #000 70%);
+  mask-image: linear-gradient(180deg, transparent 20%, #000 70%);
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px 48px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.btn-red {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+
+.btn-red:hover {
+  background: #d01707;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 24px 48px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 4px 4px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.badge-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 5px;
+  background: var(--red);
+}
+
+.title {
+  max-width: 1000px;
+  margin-top: 56px;
+  font-size: clamp(44px, 6.6vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.mobile-break {
+  display: none;
+}
+
+.subtitle {
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.waitlist-form {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  height: 64px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 64px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+}
+
+.form-input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--white);
+  font-size: 17px;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.form-button {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.form-button:hover {
+  transform: translateY(-1px);
+}
+
+.success-message {
+  max-width: 500px;
+  margin-top: 16px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.avatars {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  margin-left: -2px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar-one {
+  background: linear-gradient(135deg, #f2c4bd, #b4231a);
+}
+
+.avatar-two {
+  background: linear-gradient(135deg, #8a3b35, #2b1412);
+}
+
+.avatar-three {
+  background: linear-gradient(135deg, #e9867b, #7a1a12);
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 96px;
+}
+
+.countdown-part {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.countdown-item {
+  display: flex;
+  min-width: 90px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-number {
+  font-size: 56px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.countdown-label {
+  margin-top: 14px;
+  font-size: 17px;
+}
+
+.countdown-separator {
+  padding-top: 8px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.btn-red:focus-visible,
+.form-button:focus-visible,
+.form-input:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 20px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo svg {
+    width: 30px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .btn-red {
+    height: 40px;
+    gap: 6px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .btn-red svg {
+    width: 16px;
+  }
+
+  .content {
+    padding: 48px 20px 32px;
+  }
+
+  .badge {
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .title {
+    margin-top: 42px;
+    font-size: clamp(38px, 9vw, 56px);
+  }
+
+  .subtitle {
+    max-width: 400px;
+    margin-top: 24px;
+    font-size: 15px;
+  }
+
+  .waitlist-form {
+    height: auto;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
+    padding: 8px;
+  }
+
+  .form-input {
+    height: 48px;
+    flex: none;
+  }
+
+  .form-button {
+    width: 100%;
+    height: 48px;
+  }
+
+  .proof {
+    gap: 10px;
+    margin-top: 24px;
+    font-size: 12px;
+  }
+
+  .countdown {
+    gap: 6px;
+    padding-top: 64px;
+  }
+
+  .countdown-part {
+    gap: 6px;
+  }
+
+  .countdown-item {
+    min-width: 0;
+    width: clamp(48px, 14vw, 64px);
+  }
+
+  .countdown-number {
+    font-size: clamp(27px, 7vw, 36px);
+  }
+
+  .countdown-label {
+    margin-top: 10px;
+    font-size: 11px;
+  }
+
+  .countdown-separator {
+    padding-top: 4px;
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav {
+    gap: 8px;
+  }
+
+  .logo-text {
+    font-size: 15px;
+  }
+
+  .logo svg {
+    width: 25px;
+  }
+
+  .btn-red {
+    padding: 0 7px;
+    font-size: 10px;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .mobile-break {
+    display: inline;
+  }
+
+  .countdown-item {
+    width: 45px;
+  }
+
+  .countdown-part {
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
