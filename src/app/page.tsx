@@ -77,12 +77,12 @@ export default function Home() {
       </header>
 
       <section className="content">
-        <div className="badge">
+        {/* <div className="badge">
           <span className="badge-icon">
             <Sparkles size={16} />
           </span>
           Early access starts here
-        </div>
+        </div> */}
 
         <h1 className="title">
           Something Exciting Is

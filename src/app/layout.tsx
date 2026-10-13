@@ -14,6 +14,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Nirbhor Impex",
   description: "Reliable import, export, and global trading solutions.",
+  icons: {
+    icon: "./icon.svg",
+  },
 };
 export default function RootLayout({
   children,
